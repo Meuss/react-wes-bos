@@ -1,12 +1,15 @@
 import React from 'react';
 import { getFunName } from '../helpers';
+
 class StorePicker extends React.Component {
 
   goToStore(event) {
     event.preventDefault();
+    const storeId =
     console.log(this.storeInput.value);
-    
+    this.context.router.transitionTo('/store/${storeId}');
   }
+
   render() {
     return (
       <form className="store-selector" onSubmit={(e) => this.goToStore(e)}>
@@ -16,6 +19,11 @@ class StorePicker extends React.Component {
       </form>
     )
   }
+
+}
+
+StorePicker.contextTypes = {
+  router: React.PropTypes.object
 }
 
 export default StorePicker;
